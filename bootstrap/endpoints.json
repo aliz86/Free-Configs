@@ -1,0 +1,25 @@
+{
+  "bootstrapManifests": [],
+  "ice": [
+    {
+      "urls": [
+        "stun:stun.l.google.com:19302",
+        "stun:stun1.l.google.com:19302",
+        "stun:stun.cloudflare.com:3478"
+      ]
+    }
+  ],
+  "iceTtlSeconds": null,
+  "issuedAt": 0,
+  "mirrors": [],
+  "schema": 1,
+  "signaling": [
+    {
+      "id": "rtdb-1",
+      "kind": "firebase_rtdb",
+      "url": "https://mymommessenger-default-rtdb.firebaseio.com",
+      "weight": 100
+    }
+  ],
+  "ttlSeconds": 900
+}

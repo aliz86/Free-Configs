@@ -1,0 +1,8 @@
+# Where scripts/bootstrap.py reads My Mom Messenger's connect directory from,
+# one URL per line. The first that answers with a valid document wins; a line
+# starting with # is ignored.
+#
+# This has nothing to do with the proxy configs in this repository. See
+# bootstrap/README.md for why it lives here.
+
+https://us-central1-mymommessenger.cloudfunctions.net/signalingDirectory

@@ -58,6 +58,18 @@ https://github.com/Epodonios/v2ray-configs
 https://github.com/ebrasha/free-v2ray-public-list
 
 
+## bootstrap/
+
+`bootstrap/endpoints.json` is unrelated to the configs above and does not affect
+them. It is a mirrored copy of the endpoint list
+[My Mom Messenger](https://github.com/aliz86/MyMomMessenger) reads before every
+connect, refreshed by the same daily workflow.
+
+It is here for one reason: this repository's files are already served by several
+public CDNs that stay reachable when a single hostname is blocked, which is
+exactly what an app needs when the address it was built with stops resolving.
+See [`bootstrap/README.md`](bootstrap/README.md).
+
 ## حمایت
 
 اگر کارهای بنده باعث دسترسی شما به اینترنت آزاد شده است ممنون میشم حمایتی هم از اینجانب انجام دهید
