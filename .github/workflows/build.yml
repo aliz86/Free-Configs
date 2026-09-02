@@ -92,16 +92,29 @@ jobs:
       - name: Fetch, transform and health-check
         run: python scripts/build.py
 
+      # Unrelated to the subscription: refreshes bootstrap/endpoints.json, a
+      # mirrored copy of My Mom Messenger's connect directory. It rides along
+      # here because this repository is already published daily through several
+      # CDN fronts that are reachable from Iran, which is the only property that
+      # copy needs. See bootstrap/README.md.
+      #
+      # continue-on-error because it must never turn an unreachable third-party
+      # URL into a red build on a workflow whose actual job is the node list.
+      # The script already refuses to overwrite a good file with a bad fetch.
+      - name: Mirror the connect directory
+        continue-on-error: true
+        run: python scripts/bootstrap.py
+
       - name: Commit and push
         run: |
           set -euo pipefail
-          if [ -z "$(git status --porcelain -- configs.txt configs_base64.txt)" ]; then
-            echo "configs.txt unchanged; nothing to commit."
+          if [ -z "$(git status --porcelain -- configs.txt configs_base64.txt bootstrap/endpoints.json)" ]; then
+            echo "nothing changed; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add configs.txt configs_base64.txt
+          git add configs.txt configs_base64.txt bootstrap/endpoints.json
           # grep -c exits 1 on a zero count, which set -e would turn into a
           # failed step; build.py already refuses to publish an empty list.
           nodes="$(grep -cv '^#' configs.txt || true)"
