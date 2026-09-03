@@ -10,7 +10,7 @@
     }
   ],
   "iceTtlSeconds": null,
-  "issuedAt": 0,
+  "issuedAt": 1788446941882,
   "mirrors": [],
   "schema": 1,
   "signaling": [
@@ -19,6 +19,12 @@
       "kind": "firebase_rtdb",
       "url": "https://mymommessenger-default-rtdb.firebaseio.com",
       "weight": 100
+    },
+    {
+      "id": "rtdb-2",
+      "kind": "firebase_rtdb",
+      "url": "https://mymommessenger-7150e.firebaseio.com",
+      "weight": 99
     }
   ],
   "ttlSeconds": 900
